@@ -1,0 +1,13 @@
+{
+  "versions": [
+    {
+      "version": 1,
+      "path": "models/svm_tfidf_v1.joblib",
+      "created_at": "2025-10-21 20:10:31",
+      "signature": {
+        "input": "str(text)",
+        "output": "str(label)"
+      }
+    }
+  ]
+}

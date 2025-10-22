@@ -1,0 +1,9 @@
+pandas==2.3.2
+numpy==1.26.4
+matplotlib==3.10.6
+nltk==3.9.1
+gensim==4.3.3
+textdistance==4.6.2
+spacy==3.8.7
+typer==0.19.2
+joblib==1.5.2

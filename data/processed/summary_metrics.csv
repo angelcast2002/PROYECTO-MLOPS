@@ -1,0 +1,7 @@
+metric,value
+CV_accuracy_mean,0.9582352941176471
+CV_f1_macro_mean,0.9581735982152685
+CV_accuracy_std,0.0054444875987901395
+CV_f1_macro_std,0.005555091690292628
+latency_p50_ms,0.357
+latency_p95_ms,0.468

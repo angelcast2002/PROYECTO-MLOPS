@@ -1,0 +1,10 @@
+{
+  "optimizamos": "F1-macro",
+  "metas": {
+    "f1_macro_min": 0.94,
+    "f1_por_clase_min": 0.8
+  },
+  "sla_demo": {
+    "latencia_p95_ms": 100
+  }
+}

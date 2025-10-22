@@ -1,0 +1,34 @@
+{
+  "preprocesamiento": {
+    "lowercase": true,
+    "strip_accents": true,
+    "stopwords": "spanish",
+    "digits_removed": true,
+    "stemming": "Snowball(Spanish)",
+    "lemmatization": "spaCy (si disponible)"
+  },
+  "representaciones": {
+    "bow_tfidf": {
+      "ngram_range": [
+        1,
+        2
+      ],
+      "min_df": 2
+    },
+    "cooc_ppmi": {
+      "window": 4,
+      "min_count": 5
+    },
+    "word2vec": {
+      "sg": 1,
+      "vector_size": 100,
+      "window": 5,
+      "min_count": 5,
+      "epochs": 5
+    }
+  },
+  "clasificador": {
+    "name": "LinearSVC",
+    "features": "TF-IDF(1,2), min_df=2"
+  }
+}
