@@ -1,0 +1,32 @@
+paths:
+  raw_csv: data/raw/dataset.csv
+  processed_parquet: data/processed/preprocesado.parquet
+  models_dir: models
+  figures_dir: figures
+
+featurization:
+  cooc:
+    window: 4
+    min_count: 5
+    top_k: 20000
+  tfidf:
+    ngram_min: 1
+    ngram_max: 2
+    min_df: 2
+
+w2v:
+  vector_size: 100
+  window: 5
+  min_count: 5
+  workers: 2
+  epochs: 5
+  seed: 42
+
+splits:
+  test_size: 0.2
+  random_state: 42
+
+lm:
+  min_count: 3
+  k_values: [0.1, 0.5, 1.0]
+  ns: [1, 2, 3]
