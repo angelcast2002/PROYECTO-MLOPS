@@ -1,0 +1,9 @@
+{
+  "datasets": [
+    {
+      "version": 1,
+      "path": "data/registry/v1",
+      "sha256": "38d07c7d14fa473347f81a9c5c446c95e83a92d130cc4152b95d2f5542e83260"
+    }
+  ]
+}
