@@ -1,5 +1,5 @@
 {
   "n_preds": 210,
-  "latencia_p50_ms": 0.357,
-  "latencia_p95_ms": 0.468
+  "latencia_p50_ms": 0.316,
+  "latencia_p95_ms": 0.504
 }

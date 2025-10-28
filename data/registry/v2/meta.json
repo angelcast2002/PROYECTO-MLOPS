@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "created_at": "2025-10-23 21:43:31",
+  "rows": 10200,
+  "sha256": "38d07c7d14fa473347f81a9c5c446c95e83a92d130cc4152b95d2f5542e83260",
+  "class_dist": {
+    "play": 0.0833,
+    "tech": 0.0833,
+    "medicine": 0.0833,
+    "astronomy": 0.0833,
+    "sport": 0.0833,
+    "fashion": 0.0833,
+    "alimentation": 0.0833,
+    "politics": 0.0833,
+    "military": 0.0833,
+    "religion": 0.0833,
+    "motor": 0.0833,
+    "economy": 0.0833
+  },
+  "note": "versión base"
+}
