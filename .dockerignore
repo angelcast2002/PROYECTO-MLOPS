@@ -1,0 +1,26 @@
+# Docker ignore file
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+.pytest_cache
+.git
+.gitignore
+.github
+README.md
+Makefile
+*.md
+.venv
+venv
+env
+.env
+*.log
+.DS_Store
+.idea
+.vscode
+*.egg-info
+dist
+build
+notebooks
+.ipynb_checkpoints

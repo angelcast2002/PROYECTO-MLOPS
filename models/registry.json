@@ -17,6 +17,15 @@
         "input": "str(text)",
         "output": "str(label)"
       }
+    },
+    {
+      "version": 3,
+      "path": "models\\svm_tfidf_v3.joblib",
+      "created_at": "2025-11-03 17:58:30",
+      "signature": {
+        "input": "str(text)",
+        "output": "str(label)"
+      }
     }
   ]
 }

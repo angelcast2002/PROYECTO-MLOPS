@@ -5,6 +5,6 @@
     "f1_por_clase_min": 0.8
   },
   "sla_demo": {
-    "latencia_p95_ms": 100
+    "latencia_p95_ms": 100.0
   }
 }

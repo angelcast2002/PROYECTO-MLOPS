@@ -5,7 +5,7 @@
     "stopwords": "spanish",
     "digits_removed": true,
     "stemming": "Snowball(Spanish)",
-    "lemmatization": "spaCy (si disponible)"
+    "lemmatization": "spaCy (opcional)"
   },
   "representaciones": {
     "bow_tfidf": {

@@ -5,3 +5,7 @@
 {"ts": "2025-10-21 20:09:52", "model": "LinearSVC", "feats": "TFIDF(1,2), min_df=2", "cv": 3, "params": {"C": 1.0}, "metrics": {"f1_macro_mean": 0.9555647101020134}}
 {"ts": "2025-10-21 20:09:52", "model": "LinearSVC", "feats": "TFIDF(1,2), min_df=1", "cv": 3, "params": {"C": 1.0}, "metrics": {"f1_macro_mean": 0.9539809303334956}}
 {"ts": "2025-10-21 20:09:52", "model": "LinearSVC", "feats": "TFIDF(1,2), min_df=2", "cv": 3, "params": {"C": 0.5}, "metrics": {"f1_macro_mean": 0.9536701886943009}}
+{"ts": "2025-11-03 18:07:47", "model": "LinearSVC", "feats": "TFIDF(1,2), min_df=1", "cv": 3, "params": {"C": 1.0}, "metrics": {"f1_macro_mean": 0.9539809303334956}}
+{"ts": "2025-11-03 18:08:50", "model": "LinearSVC", "feats": "TFIDF(1,2), min_df=2", "cv": 3, "params": {"C": 1.0}, "metrics": {"f1_macro_mean": 0.9555647101020134}}
+{"ts": "2025-11-03 18:09:50", "model": "LinearSVC", "feats": "TFIDF(1,2), min_df=2", "cv": 3, "params": {"C": 0.5}, "metrics": {"f1_macro_mean": 0.9536701886943009}}
+{"ts": "2025-11-03 18:10:49", "model": "LinearSVC", "feats": "TFIDF(1,2), min_df=3", "cv": 3, "params": {"C": 1.0}, "metrics": {"f1_macro_mean": 0.9557678392128032}}

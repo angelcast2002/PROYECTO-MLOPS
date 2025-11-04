@@ -1,0 +1,55 @@
+name: CD - Model Registry & Versioning
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  register-model:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      
+      - name: Run full pipeline
+        run: |
+          python pipeline.py all --fast 5000
+      
+      - name: Generate model metadata
+        run: |
+          python -c "
+          import json
+          from datetime import datetime
+          metadata = {
+            'timestamp': datetime.now().isoformat(),
+            'version': 'v${{ github.run_number }}',
+            'commit_sha': '${{ github.sha }}',
+            'branch': '${{ github.ref_name }}'
+          }
+          with open('models/metadata.json', 'w') as f:
+            json.dump(metadata, f, indent=2)
+          "
+      
+      - name: Upload model artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: modelo-${{ github.run_number }}
+          path: models/
+          retention-days: 30
+      
+      - name: Update model registry
+        run: |
+          echo "✅ Modelo registrado: v${{ github.run_number }}"

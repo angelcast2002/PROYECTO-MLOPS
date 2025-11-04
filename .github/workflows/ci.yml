@@ -5,9 +5,73 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install -r requirements.txt
-      - run: pip install typer[all] pyyaml pytest
-      - run: python pipeline.py all --fast 1000
+      
+      - name: Cache pip packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install typer[all] pyyaml pytest pytest-cov
+      
+      - name: Download spaCy model
+        run: python -m spacy download es_core_news_sm
+      
+      - name: Download NLTK data
+        run: python -c "import nltk; nltk.download('stopwords')"
+      
+      - name: Run tests
+        run: pytest tests/ -v --cov=proyecto_mlops --cov-report=xml
+      
+      - name: Run pipeline (fast mode)
+        run: python pipeline.py all --fast 1000
+      
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage.xml
+          flags: unittests
+          name: codecov-umbrella
+
+  quality-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      
+      - name: Install linters
+        run: |
+          pip install flake8 black isort
+      
+      - name: Check code formatting
+        run: black --check proyecto_mlops/ cli.py
+      
+      - name: Check import sorting
+        run: isort --check-only proyecto_mlops/ cli.py
+      
+      - name: Lint code
+        run: flake8 proyecto_mlops/ cli.py --max-line-length=120
+
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          trivy-config: trivy.yaml
