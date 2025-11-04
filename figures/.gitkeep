@@ -1,0 +1,7 @@
+# Archivos generados por figuras y gráficos
+*.png
+*.jpg
+*.jpeg
+*.pdf
+*.svg
+!.gitkeep

@@ -1,0 +1,87 @@
+# pyproject.toml - Configuración moderna de Python
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "proyecto-mlops"
+version = "0.1.0"
+description = "MLOps Pipeline para Clasificación de Documentos en Español"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Angel Castillo", email = "angelcast2002@gmail.com"}
+]
+keywords = [
+    "mlops",
+    "machine-learning",
+    "nlp",
+    "classification",
+    "crisp-dm",
+    "pipeline"
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "pandas>=2.0.0",
+    "numpy>=1.20.0",
+    "scikit-learn>=1.0.0",
+    "matplotlib>=3.5.0",
+    "nltk>=3.8",
+    "gensim>=4.0.0",
+    "spacy>=3.0.0",
+    "typer[all]>=0.9.0",
+    "pyyaml>=6.0",
+    "joblib>=1.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=3.0.0",
+    "black>=22.0.0",
+    "flake8>=4.0.0",
+    "isort>=5.0.0",
+    "mypy>=0.950",
+]
+docker = [
+    "docker>=5.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/angelcast2002/PROYECTO-MLOPS"
+Documentation = "https://github.com/angelcast2002/PROYECTO-MLOPS"
+Repository = "https://github.com/angelcast2002/PROYECTO-MLOPS"
+"Bug Tracker" = "https://github.com/angelcast2002/PROYECTO-MLOPS/issues"
+
+[project.scripts]
+proyecto-mlops = "proyecto_mlops.cli:app"
+
+[tool.black]
+line-length = 120
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+line_length = 120
+skip_gitignore = true
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
