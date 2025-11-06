@@ -1,11 +1,13 @@
 {
   "version": "1.0",
-  "dataset_name": "news_es",
+  "dataset_name": "news_classification_es",
+  "timestamp": "2025-11-04 20:01:48",
   "columns": {
     "text": {
       "dtype": "string",
       "required": true,
-      "min_length": 10
+      "min_length": 10,
+      "description": "Documento de texto en español"
     },
     "label": {
       "dtype": "string",
@@ -23,7 +25,8 @@
         "religion",
         "sport",
         "tech"
-      ]
+      ],
+      "description": "Categoría del documento"
     }
   },
   "allow_extra_columns": false

@@ -103,18 +103,34 @@ def save_preprocessed_data(
     df: pd.DataFrame,
     output_path: str = PROCESSED_PARQUET
 ) -> str:
-    """Guarda datos preprocesados en parquet."""
+    """Guarda datos preprocesados en CSV (fallback desde parquet)."""
     ensure_dirs(os.path.dirname(output_path))
-    df.to_parquet(output_path, index=False)
+    # Cambiar extensión a CSV si es parquet
+    if output_path.endswith('.parquet'):
+        output_path = output_path.replace('.parquet', '.csv')
+    # Guardar como CSV
+    df.to_csv(output_path, index=False)
     logger.info(f"[DATA_PREPARATION] Datos guardados: {output_path}")
     return output_path
 
 
 def load_preprocessed_data(input_path: str = PROCESSED_PARQUET) -> pd.DataFrame:
-    """Carga datos preprocesados."""
+    """Carga datos preprocesados (CSV o parquet)."""
     if not os.path.exists(input_path):
+        # Intentar con CSV si parquet no existe
+        csv_path = input_path.replace('.parquet', '.csv')
+        if os.path.exists(csv_path):
+            return pd.read_csv(csv_path)
         raise FileNotFoundError(f"Archivo no encontrado: {input_path}")
-    return pd.read_parquet(input_path)
+    # Intentar parquet primero
+    try:
+        return pd.read_parquet(input_path)
+    except:
+        # Fallback a CSV
+        csv_path = input_path.replace('.parquet', '.csv')
+        if os.path.exists(csv_path):
+            return pd.read_csv(csv_path)
+        raise
 
 
 def prepare_data_pipeline(

@@ -6,8 +6,7 @@ Comprensión del negocio y definición de objetivos.
 
 import os
 from typing import Dict
-from . import logger
-from ..utils import save_json, load_json, DOCS_DIR, get_timestamp
+from ..utils import save_json, load_json, logger, DOCS_DIR, get_timestamp
 
 
 def define_business_objectives() -> Dict:

@@ -37,6 +37,25 @@ def register_model_in_registry(
     # Cargar registro existente
     if os.path.exists(MODEL_REGISTRY):
         registry = load_json(MODEL_REGISTRY)
+        # Verificar si usa formato antiguo
+        if "versions" in registry and "models" not in registry:
+            # Migrar formato antiguo al nuevo
+            old_versions = registry.get("versions", [])
+            registry = {
+                "models": [
+                    {
+                        "version": v["version"],
+                        "name": model_name,
+                        "path": v["path"],
+                        "status": "archived",
+                        "metrics": {},
+                        "registered_at": v.get("created_at", "")
+                    }
+                    for v in old_versions
+                ],
+                "current_production": None,
+                "created_at": registry.get("created_at", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+            }
     else:
         registry = init_model_registry()
     
