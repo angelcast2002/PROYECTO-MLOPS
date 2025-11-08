@@ -18,8 +18,21 @@ from ..utils import (
 )
 
 
-# Inicializar recursos
-SPANISH_SW = set(stopwords.words("spanish"))
+# Inicializar recursos de forma segura (carga perezosa y con fallback)
+try:
+    SPANISH_SW = set(stopwords.words("spanish"))
+except LookupError:
+    # Descarga automática si el recurso no existe (p. ej., en CI)
+    try:
+        import nltk
+        nltk.download("stopwords")
+        SPANISH_SW = set(stopwords.words("spanish"))
+    except Exception:
+        # Fallback sin stopwords (no bloquear import)
+        SPANISH_SW = set()
+except Exception:
+    SPANISH_SW = set()
+
 STEMMER = SpanishStemmer()
 
 

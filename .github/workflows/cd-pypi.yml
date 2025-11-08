@@ -21,6 +21,18 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Prepare NLTK data
+        run: |
+          python - << 'PY'
+          import os, nltk
+          d = os.path.expanduser('~/nltk_data')
+          os.makedirs(d, exist_ok=True)
+          nltk.download('stopwords', download_dir=d)
+          print('NLTK data at', d)
+          PY
+        env:
+          NLTK_DATA: ${{ github.workspace }}/../nltk_data
+
       - name: Clean dist
         run: rm -rf dist
 
@@ -55,12 +67,16 @@ jobs:
         run: |
           pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple proyecto-mlops
           python -c "import proyecto_mlops; print(proyecto_mlops.__version__)"
+        env:
+          NLTK_DATA: ${{ github.workspace }}/../nltk_data
 
       - name: Test installation from PyPI
         if: ${{ github.event_name == 'push' }}
         run: |
           pip install proyecto-mlops
           python -c "import proyecto_mlops; print(proyecto_mlops.__version__)"
+        env:
+          NLTK_DATA: ${{ github.workspace }}/../nltk_data
 
       - name: Create Release
         if: ${{ github.event_name == 'push' }}
