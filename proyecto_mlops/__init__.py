@@ -3,8 +3,8 @@
 Paquete principal de proyecto_mlops.
 """
 
-__version__ = "0.1.0"
-__author__ = "Angel Castillo"
+__version__ = "0.1.1"
+__author__ = "Angel Castellanos"
 
 from .business_understanding import (
     define_business_objectives,
