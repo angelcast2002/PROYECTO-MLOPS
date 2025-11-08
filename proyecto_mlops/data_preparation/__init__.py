@@ -8,8 +8,7 @@ import os
 import re
 import unicodedata
 import pandas as pd
-import numpy as np
-from typing import List, Callable
+from typing import List
 from nltk.corpus import stopwords
 from nltk.stem.snowball import SpanishStemmer
 
@@ -125,7 +124,7 @@ def load_preprocessed_data(input_path: str = PROCESSED_PARQUET) -> pd.DataFrame:
     # Intentar parquet primero
     try:
         return pd.read_parquet(input_path)
-    except:
+    except Exception:
         # Fallback a CSV
         csv_path = input_path.replace('.parquet', '.csv')
         if os.path.exists(csv_path):

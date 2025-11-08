@@ -5,16 +5,16 @@ Entrenamiento de modelos.
 """
 
 import os
-import json
 from datetime import datetime
 from typing import Dict, List, Tuple
+import json
 import numpy as np
 import pandas as pd
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.svm import LinearSVC
-from sklearn.metrics import f1_score, accuracy_score, classification_report, confusion_matrix
+from sklearn.metrics import f1_score, accuracy_score
 import joblib
 
 from ..utils import ensure_dirs, save_json, load_json, logger, MODELS_DIR, EXP_LOG

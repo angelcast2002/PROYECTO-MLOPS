@@ -15,17 +15,13 @@ from proyecto_mlops.business_understanding import save_business_document
 from proyecto_mlops.data_understanding import (
     load_raw_dataset,
     explore_data,
-    make_data_schema,
-    validate_schema,
-    save_data_schema
+    save_data_schema,
 )
 from proyecto_mlops.data_preparation import prepare_data_pipeline
 from proyecto_mlops.modeling import (
     train_model,
     cross_validate_model,
     save_model,
-    log_experiment,
-    hyperparameter_sweep
 )
 from proyecto_mlops.utils import (
     DATA_PROCESSED_DIR,
@@ -116,8 +112,8 @@ def train(
         try:
             df_prep = pd.read_csv(csv_path)
             typer.echo("   [INFO] Datos cargados desde CSV procesado")
-        except:
-            # Fallback to raw CSV
+        except Exception:
+            # Fallback a CSV crudo
             df_prep = pd.read_csv(DATA_RAW_CSV)
             typer.echo("   [INFO] Datos cargados desde CSV (sin procesamiento)")
         
@@ -162,7 +158,7 @@ def evaluate():
         csv_path = os.path.join(os.path.dirname(PROCESSED_PARQUET), "preprocesado.csv")
         try:
             df_prep = pd.read_csv(csv_path)
-        except:
+        except Exception:
             df_prep = pd.read_csv(DATA_RAW_CSV)
         
         texts = df_prep['text' if 'text' in df_prep.columns else 'text_prep'].tolist()
