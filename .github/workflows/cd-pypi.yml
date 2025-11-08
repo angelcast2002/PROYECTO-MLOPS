@@ -4,42 +4,66 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'publish target (testpypi|pypi)'
+        required: true
+        default: 'testpypi'
 
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v4
-      
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      
+
+      - name: Clean dist
+        run: rm -rf dist
+
       - name: Install build tools
         run: |
-          pip install --upgrade pip setuptools wheel build twine
-      
+          python -m pip install --upgrade pip
+          pip install setuptools wheel build twine
+
       - name: Build package
         run: python -m build
-      
-      - name: Publish to TestPyPI
+
+      - name: Show dist files
+        run: ls -l dist/
+
+      - name: Publish to TestPyPI (manual)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.target == 'testpypi' }}
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          repository-url: https://test.pypi.org/
+          repository-url: https://test.pypi.org/legacy/
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
-      
-      - name: Test installation from TestPyPI
-        run: |
-          pip install --index-url https://test.pypi.org/simple/ proyecto-mlops
-          python -c "import proyecto_mlops; print(proyecto_mlops.__version__)"
-      
-      - name: Publish to PyPI
+          verbose: true
+
+      - name: Publish to PyPI (tag push)
+        if: ${{ github.event_name == 'push' }}
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
-      
+          verbose: true
+
+      - name: Test installation from TestPyPI
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.target == 'testpypi' }}
+        run: |
+          pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple proyecto-mlops
+          python -c "import proyecto_mlops; print(proyecto_mlops.__version__)"
+
+      - name: Test installation from PyPI
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          pip install proyecto-mlops
+          python -c "import proyecto_mlops; print(proyecto_mlops.__version__)"
+
       - name: Create Release
+        if: ${{ github.event_name == 'push' }}
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
