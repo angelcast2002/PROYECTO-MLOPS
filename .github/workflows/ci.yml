@@ -32,8 +32,8 @@ jobs:
       - name: Run tests
         run: pytest tests/ -v --cov=proyecto_mlops --cov-report=xml
       
-      - name: Run pipeline (fast mode)
-        run: python pipeline.py all --fast 1000
+      - name: Run pipeline (smoke)
+        run: python -m proyecto_mlops.cli all --cv False
       
       - name: Upload coverage reports
         uses: codecov/codecov-action@v3
@@ -56,13 +56,13 @@ jobs:
           pip install flake8 black isort
       
       - name: Check code formatting
-        run: black --check proyecto_mlops/ cli.py
+        run: black --check proyecto_mlops/ tests/
       
       - name: Check import sorting
-        run: isort --check-only proyecto_mlops/ cli.py
+        run: isort --check-only proyecto_mlops/ tests/
       
       - name: Lint code
-        run: flake8 proyecto_mlops/ cli.py --max-line-length=120
+        run: flake8 proyecto_mlops/ tests/ --max-line-length=120
 
   security-scan:
     runs-on: ubuntu-latest

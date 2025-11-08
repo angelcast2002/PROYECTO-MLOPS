@@ -5,8 +5,10 @@ PROYECTO-MLOPS: CLI Principal
 Herramienta de línea de comandos para el pipeline MLOps completo
 """
 
-import typer
 from typing import Optional
+
+import pandas as pd
+import typer
 
 # Import fases CRISP-DM
 from proyecto_mlops.business_understanding import save_business_document
@@ -25,8 +27,13 @@ from proyecto_mlops.modeling import (
     log_experiment,
     hyperparameter_sweep
 )
-from proyecto_mlops.utils import PROCESSED_PARQUET, DATA_RAW_CSV, MODELS_DIR, DATA_PROCESSED_DIR, load_json
-import pandas as pd
+from proyecto_mlops.utils import (
+    DATA_PROCESSED_DIR,
+    DATA_RAW_CSV,
+    MODELS_DIR,
+    PROCESSED_PARQUET,
+    load_json,
+)
 from proyecto_mlops.evaluation import (
     full_evaluation,
     save_evaluation_report
@@ -187,7 +194,6 @@ def evaluate():
         raise typer.Exit(1)
 
 
-@app.command()
 @app.command()
 def deploy(
     promote: bool = typer.Option(False, help="Promover a produccion"),

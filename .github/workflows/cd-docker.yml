@@ -6,7 +6,7 @@ on:
       - main
       - release/*
     paths:
-      - 'Dockerfile'
+      - 'infra/Dockerfile'
       - 'requirements.txt'
       - 'proyecto_mlops/**'
       - '.github/workflows/cd-docker.yml'
@@ -37,6 +37,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
+          file: infra/Dockerfile
           push: true
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/proyecto-mlops:${{ steps.version.outputs.VERSION }}
