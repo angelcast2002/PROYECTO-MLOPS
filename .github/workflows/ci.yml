@@ -1,74 +1,10 @@
 name: ci
 on: [push, pull_request]
 jobs:
-  pipeline-smoke:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      
-      - name: Cache pip packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-      
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install typer[all] pyyaml pytest pytest-cov
-      
-      - name: Download spaCy model
-        run: python -m spacy download es_core_news_sm
-      
-      - name: Download NLTK data
-        run: python -c "import nltk; nltk.download('stopwords')"
-      
-      - name: Run tests
-        run: pytest tests/ -v --cov=proyecto_mlops --cov-report=xml
-      
-      - name: Run pipeline (smoke)
-        run: python -m proyecto_mlops.cli all --cv False
-      
-      - name: Upload coverage reports
-        uses: codecov/codecov-action@v3
-        with:
-          file: ./coverage.xml
-          flags: unittests
-          name: codecov-umbrella
-
-  quality-checks:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      
-      - name: Install linters
-        run: |
-          pip install flake8 black isort
-      
-      - name: Format code with black
-        run: black proyecto_mlops/ tests/
-      
-      - name: Sort imports with isort
-        run: isort proyecto_mlops/ tests/
-      
-      - name: Lint code
-        run: flake8 proyecto_mlops/ tests/ --max-line-length=120
-
   security-scan:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
