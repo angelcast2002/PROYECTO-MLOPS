@@ -1,4 +1,4 @@
-name: CD - PyPI Package Release
+name: CD - PyPI Package Release 
 
 on:
   push:
