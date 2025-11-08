@@ -2,11 +2,9 @@ name: CD - Model Registry & Versioning
 
 on:
   workflow_run:
-    workflows: ["CI"]
-    types:
-      - completed
-    branches:
-      - main
+    workflows: ["ci"]  # matches name in ci.yml (case-sensitive)
+    types: [completed]
+    branches: [main]
 
 jobs:
   register-model:
@@ -23,6 +21,13 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install typer[all]
+
+      - name: Download spaCy model
+        run: python -m spacy download es_core_news_sm
+
+      - name: Download NLTK data
+        run: python -c "import nltk; nltk.download('stopwords')"
       
       - name: Run full pipeline
         run: |
@@ -44,7 +49,7 @@ jobs:
           "
       
       - name: Upload model artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: modelo-${{ github.run_number }}
           path: models/
