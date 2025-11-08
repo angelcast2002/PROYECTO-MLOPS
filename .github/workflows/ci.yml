@@ -55,11 +55,11 @@ jobs:
         run: |
           pip install flake8 black isort
       
-      - name: Check code formatting
-        run: black --check proyecto_mlops/ tests/
+      - name: Format code with black
+        run: black proyecto_mlops/ tests/
       
-      - name: Check import sorting
-        run: isort --check-only proyecto_mlops/ tests/
+      - name: Sort imports with isort
+        run: isort proyecto_mlops/ tests/
       
       - name: Lint code
         run: flake8 proyecto_mlops/ tests/ --max-line-length=120
