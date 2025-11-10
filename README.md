@@ -358,6 +358,8 @@ Ejecuta después de CI exitoso:
 
 ## 🐳 Docker
 
+Para una guía paso a paso de despliegue en DigitalOcean (Droplet Ubuntu) consulta: `docs_project/DEPLOY_DIGITAL_OCEAN.md`.
+
 ### Build
 
 ```bash
