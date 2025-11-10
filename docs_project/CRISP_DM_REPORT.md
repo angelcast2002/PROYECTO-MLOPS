@@ -378,7 +378,7 @@ docker run -p 8000:8000 -v $(pwd)/data:/app/data proyecto-mlops:latest
 
 2. **CD Docker** (`.github/workflows/cd-docker.yml`)
    - Build imagen Docker
-   - Push a Docker Hub
+   - Push a Docker Hub (angelcast2025)
    - Triggered en cambios a main
 
 3. **CD PyPI** (`.github/workflows/cd-pypi.yml`)

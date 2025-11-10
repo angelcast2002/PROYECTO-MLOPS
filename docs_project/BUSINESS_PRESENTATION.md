@@ -230,7 +230,7 @@ Se pueden reclasificar automáticamente para auditoría y calibración del model
 **Proyecto:** PROYECTO-MLOPS  
 **Repository:** https://github.com/angelcast2002/PROYECTO-MLOPS  
 **PyPI:** https://pypi.org/project/proyecto-mlops/  
-**Docker Hub:** https://hub.docker.com/r/angelcast2002/proyecto-mlops  
+**Docker Hub:** https://hub.docker.com/repository/docker/angelcast2025/proyecto-mlops/general  
 
 ---
 

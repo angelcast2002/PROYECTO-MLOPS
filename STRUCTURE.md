@@ -395,7 +395,7 @@ pip install proyecto-mlops
 
 - **GitHub**: https://github.com/angelcast2002/PROYECTO-MLOPS
 - **PyPI**: https://pypi.org/project/proyecto-mlops/
-- **Docker Hub**: https://hub.docker.com/r/angelcast2002/proyecto-mlops
+- **Docker Hub**: https://hub.docker.com/repository/docker/angelcast2025/proyecto-mlops/general
 - **Email**: angelcast2002@gmail.com
 
 ---

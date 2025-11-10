@@ -381,7 +381,7 @@ docker run -v $(pwd)/data:/app/data proyecto-mlops:latest
 |---------|-----------|
 | **GitHub Repository** | https://github.com/angelcast2002/PROYECTO-MLOPS |
 | **PyPI Package** | https://pypi.org/project/proyecto-mlops/ |
-| **Docker Hub** | https://hub.docker.com/r/angelcast2002/proyecto-mlops |
+| **Docker Hub** | https://hub.docker.com/repository/docker/angelcast2025/proyecto-mlops/general |
 | **Author Email** | angelcast2002@gmail.com |
 | **GitHub Actions** | https://github.com/angelcast2002/PROYECTO-MLOPS/actions |
 | **Issues** | https://github.com/angelcast2002/PROYECTO-MLOPS/issues |

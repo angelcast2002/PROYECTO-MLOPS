@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/angelcast2002/PROYECTO-MLOPS/workflows/ci/badge.svg)](https://github.com/angelcast2002/PROYECTO-MLOPS/actions)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Docker](https://img.shields.io/badge/docker-latest-blue.svg)](https://hub.docker.com/r/angelcast2002/proyecto-mlops)
+[![Docker](https://img.shields.io/badge/docker-latest-blue.svg)](https://hub.docker.com/repository/docker/angelcast2025/proyecto-mlops/general)
 [![PyPI](https://img.shields.io/badge/PyPI-0.1.0-green.svg)](https://pypi.org/project/proyecto-mlops/)
 
 ## 📋 Descripción
@@ -337,7 +337,7 @@ Ejecuta en cada push/PR:
 #### 2. **Docker CD** (`.github/workflows/cd-docker.yml`)
 Ejecuta en push a main:
 - ✅ Build imagen Docker
-- ✅ Push a Docker Hub (`docker.io/angelcast2002/proyecto-mlops`)
+- ✅ Push a Docker Hub (`docker.io/angelcast2025/proyecto-mlops`)
 - ✅ Tagged con versión + latest
 
 #### 3. **PyPI CD** (`.github/workflows/cd-pypi.yml`)
@@ -381,15 +381,15 @@ docker run -v $(pwd)/config.yaml:/app/config.yaml \
 ### Push a Docker Hub
 
 ```bash
-docker tag proyecto-mlops:latest angelcast2002/proyecto-mlops:latest
-docker push angelcast2002/proyecto-mlops:latest
+docker tag proyecto-mlops:latest angelcast2025/proyecto-mlops:latest
+docker push angelcast2025/proyecto-mlops:latest
 ```
 
 ### Disponible en
 
 ```
-docker pull angelcast2002/proyecto-mlops:latest
-docker pull angelcast2002/proyecto-mlops:0.1.0
+docker pull angelcast2025/proyecto-mlops:latest
+docker pull angelcast2025/proyecto-mlops:0.1.6
 ```
 
 ---
@@ -580,8 +580,8 @@ MIT License - ver LICENSE file
 
 ## 📞 Contacto
 
-**Autor:** Angel Castillo  
-**Email:** angelcast2002@gmail.com  
+**Autores:** Angel Castillo, Alejandro Azurdia, Diego Morales  
+**Email contacto:** angelcast2002@gmail.com  
 **GitHub:** [@angelcast2002](https://github.com/angelcast2002)  
 
 ---
@@ -591,13 +591,13 @@ MIT License - ver LICENSE file
 | Recurso | Link |
 |---------|------|
 | 📦 PyPI Package | https://pypi.org/project/proyecto-mlops/ |
-| 🐳 Docker Hub | https://hub.docker.com/r/angelcast2002/proyecto-mlops |
+| 🐳 Docker Hub | https://hub.docker.com/repository/docker/angelcast2025/proyecto-mlops/general |
 | 📊 Repository | https://github.com/angelcast2002/PROYECTO-MLOPS |
 | 🚀 Releases | https://github.com/angelcast2002/PROYECTO-MLOPS/releases |
 | ⚙️ GitHub Actions | https://github.com/angelcast2002/PROYECTO-MLOPS/actions |
 
 ---
 
-**Última actualización:** Noviembre 3, 2025  
-**Versión:** 0.1.0  
+**Última actualización:** Noviembre 10, 2025  
+**Versión:** 0.1.6  
 **Estado:** ✅ Producción Ready

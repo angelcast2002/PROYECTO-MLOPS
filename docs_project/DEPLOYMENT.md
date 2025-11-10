@@ -29,7 +29,7 @@ pip install -e .
 ### Opción 3: Docker
 
 ```bash
-docker pull angelcast2002/proyecto-mlops:latest
+docker pull angelcast2025/proyecto-mlops:latest
 ```
 
 ---

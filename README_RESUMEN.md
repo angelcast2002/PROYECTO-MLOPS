@@ -1,7 +1,7 @@
 # ✅ PROYECTO MLOPS - SESIÓN FINALIZADA
 
 **Estado**: ✅ COMPLETADO  
-**Fecha**: Noviembre 3-4, 2025  
+**Fecha**: Noviembre 10, 2025  
 **Duración**: ~2.5 horas  
 
 ---

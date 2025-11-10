@@ -4,7 +4,7 @@ Paquete principal de proyecto_mlops.
 """
 
 __version__ = "0.1.6"
-__author__ = "Angel Castellanos"
+__author__ = "Angel Castellanos, Alejandro Azurdia, Diego Morales"
 
 from .business_understanding import (
     define_business_objectives,
