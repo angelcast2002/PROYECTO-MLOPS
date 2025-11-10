@@ -3,7 +3,7 @@
 Título: Clasificación de Documentos en Español con Enfoque MLOps  
 Versión del sistema: 0.1.6  
 Fecha: 10/11/2025  
-Autores: Angel Castillo, Alejandro Azurdia, Diego Morales  
+Autores: Angel Castellanos, Alejandro Azurdia, Diego Morales  
 Repositorio: https://github.com/angelcast2002/PROYECTO-MLOPS  
 Paquete PyPI: https://pypi.org/project/proyecto-mlops/  
 Docker Hub: https://hub.docker.com/repository/docker/angelcast2025/proyecto-mlops/general

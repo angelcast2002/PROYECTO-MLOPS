@@ -325,12 +325,6 @@ git push origin main
 
 ---
 
-## Soporte
-
-- 📖 Documentación: https://github.com/angelcast2002/PROYECTO-MLOPS
-- 🐛 Issues: https://github.com/angelcast2002/PROYECTO-MLOPS/issues
-- 📧 Email: angelcast2002@gmail.com
-
 ---
 
 **Última actualización:** Noviembre 2025

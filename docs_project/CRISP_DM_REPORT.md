@@ -3,7 +3,7 @@
 ## Documento de Completación del Proyecto Final MLOps
 
 **Fecha:** Noviembre 2025  
-**Autor:** Angel Castillo  
+**Autor:** Angel Castellanos  
 **Versión:** 1.0
 
 ---
