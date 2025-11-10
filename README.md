@@ -583,8 +583,6 @@ MIT License - ver LICENSE file
 ## 📞 Contacto
 
 **Autores:** Angel Castillo, Alejandro Azurdia, Diego Morales  
-**Email contacto:** angelcast2002@gmail.com  
-**GitHub:** [@angelcast2002](https://github.com/angelcast2002)  
 
 ---
 
