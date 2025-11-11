@@ -582,7 +582,7 @@ MIT License - ver LICENSE file
 
 ## 📞 Contacto
 
-**Autores:** Angel Castellanos, Alejandro Azurdia, Diego Morales  
+**Autores:** Angel Castellanos, Alejandro Azurdia, Diego Morales, Sara Echeverría  
 
 ---
 
