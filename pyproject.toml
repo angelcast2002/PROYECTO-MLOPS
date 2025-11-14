@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
-    {name = "Angel Castillo", email = "angelcast2002@gmail.com"},
+    {name = "Angel Castellanos", email = "angelcast2002@gmail.com"},
     {name = "Alejandro Azurdia"},
     {name = "Diego Morales"}
 ]

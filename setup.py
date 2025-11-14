@@ -14,7 +14,7 @@ with open(readme_path, "r", encoding="utf-8") as f:
 setup(
     name="proyecto-mlops",
     version="0.1.0",
-    author="Angel Castillo",
+    author="Angel Castellanos",
     author_email="angelcast2002@gmail.com",
     description="MLOps Pipeline para Clasificación de Documentos en Español",
     long_description=long_description,

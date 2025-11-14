@@ -638,7 +638,7 @@ PROYECTO-MLOPS/
 
 ## Contacto
 
-**Autor:** Angel Castillo  
+**Autor:** Angel Castellanos  
 **Email:** angelcast2002@gmail.com  
 **GitHub:** https://github.com/angelcast2002/PROYECTO-MLOPS  
 
