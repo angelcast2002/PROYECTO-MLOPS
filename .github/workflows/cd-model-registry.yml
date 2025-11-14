@@ -20,8 +20,19 @@ jobs:
       
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install typer[all]
+          pip install typer
+
+      - name: Install local multi-packages (CRISP-DM phases)
+        run: |
+          pip install ./packages/proyecto-core
+          pip install ./packages/proyecto-bu
+          pip install ./packages/proyecto-du
+          pip install ./packages/proyecto-dp
+          pip install ./packages/proyecto-modeling
+          pip install ./packages/proyecto-eval
+          pip install ./packages/proyecto-deploy
 
       - name: Download spaCy model
         run: python -m spacy download es_core_news_sm
