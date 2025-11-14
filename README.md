@@ -136,7 +136,78 @@ PROYECTO-MLOPS/
 
 ---
 
-## 🔄 Ciclo CRISP-DM
+## 🧩 Arquitectura multi-paquete (CRISP-DM por etapas)
+
+Además del paquete monolítico `proyecto-mlops`, el repo ahora expone paquetes independientes por fase y un agregador final:
+
+```
+packages/
+    ├─ proyecto-core/       # utilidades y rutas compartidas
+    ├─ proyecto-bu/         # Business Understanding
+    ├─ proyecto-du/         # Data Understanding
+    ├─ proyecto-dp/         # Data Preparation
+    ├─ proyecto-modeling/   # Modeling
+    ├─ proyecto-eval/       # Evaluation
+    ├─ proyecto-deploy/     # Deployment
+    └─ proyecto-final/      # Agregador + CLI multi-paquete
+```
+
+Instalación en desarrollo (editable):
+
+```pwsh
+pip install -e .\packages\proyecto-core
+pip install -e .\packages\proyecto-bu
+pip install -e .\packages\proyecto-du
+pip install -e .\packages\proyecto-dp
+pip install -e .\packages\proyecto-modeling
+pip install -e .\packages\proyecto-eval
+pip install -e .\packages\proyecto-deploy
+pip install -e .\packages\proyecto-final
+```
+
+O bien, usa el script de instalación rápida (Windows/PowerShell):
+
+```pwsh
+pwsh -File .\scripts\dev_install.ps1
+```
+
+Uso de ejemplo:
+
+```python
+from proyecto_dp import prepare_data_pipeline
+from proyecto_modeling import train_model
+from proyecto_final import full_evaluation
+```
+
+CLI del agregador:
+
+```pwsh
+proyecto-final all
+```
+
+Nota: el archivo `pipeline.py` se mantiene como shim de compatibilidad para los tests y, si no encuentra el paquete `proyecto_dp`, hace fallback al monolítico.
+
+---
+
+## � Paquetes en PyPI
+
+Además del paquete monolítico `proyecto-mlops`, cada etapa está publicada individualmente en PyPI. Links directos:
+
+- Núcleo compartido: https://pypi.org/project/proyecto-core/
+- Business Understanding: https://pypi.org/project/proyecto-bu/
+- Data Understanding: https://pypi.org/project/proyecto-du/
+- Data Preparation: https://pypi.org/project/proyecto-dp/
+- Modeling: https://pypi.org/project/proyecto-modeling/
+- Evaluation: https://pypi.org/project/proyecto-eval/
+- Deployment: https://pypi.org/project/proyecto-deploy/
+- Agregador (CLI multi-paquete): https://pypi.org/project/proyecto-final/
+- Paquete monolítico: https://pypi.org/project/proyecto-mlops/
+
+Para publicar nuevas versiones de todos los paquetes desde GitHub Actions, usa el workflow “CD - PyPI (multi-package)” (manual) o genera un tag `packages-vX.Y.Z` y se publicará en matriz.
+
+---
+
+## �🔄 Ciclo CRISP-DM
 
 ### 1. **Business Understanding** 🎯
 Definición de objetivos de negocio, problemas, y criterios de éxito.
@@ -598,6 +669,6 @@ MIT License - ver LICENSE file
 
 ---
 
-**Última actualización:** Noviembre 10, 2025  
+**Última actualización:** Noviembre 13, 2025  
 **Versión:** 0.1.6  
 **Estado:** ✅ Producción Ready

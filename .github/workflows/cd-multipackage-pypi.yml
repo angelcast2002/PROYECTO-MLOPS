@@ -1,0 +1,66 @@
+name: CD - PyPI (multi-package)
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: "Target repository (pypi or testpypi)"
+        required: false
+        default: "pypi"
+  push:
+    tags:
+      - "packages-v*"
+
+jobs:
+  build-and-publish:
+    name: Publish ${{ matrix.package.id }} to ${{ inputs.repository || 'pypi' }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - { id: "proyecto-core",    path: "packages/proyecto-core" }
+          - { id: "proyecto-bu",      path: "packages/proyecto-bu" }
+          - { id: "proyecto-du",      path: "packages/proyecto-du" }
+          - { id: "proyecto-dp",      path: "packages/proyecto-dp" }
+          - { id: "proyecto-modeling",path: "packages/proyecto-modeling" }
+          - { id: "proyecto-eval",    path: "packages/proyecto-eval" }
+          - { id: "proyecto-deploy",  path: "packages/proyecto-deploy" }
+          - { id: "proyecto-final",   path: "packages/proyecto-final" }
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install build tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine
+
+      - name: Build dist
+        working-directory: ${{ matrix.package.path }}
+        run: |
+          python -m build
+
+      - name: Publish to TestPyPI (if selected)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.repository == 'testpypi' }}
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
+        run: |
+          python -m twine upload --non-interactive --skip-existing \
+            --repository-url https://test.pypi.org/legacy/ \
+            ${{ matrix.package.path }}/dist/*
+
+      - name: Publish to PyPI (default)
+        if: ${{ (github.event_name == 'workflow_dispatch' && (inputs.repository == '' || inputs.repository == 'pypi')) || startsWith(github.ref, 'refs/tags/packages-v') }}
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          python -m twine upload --non-interactive --skip-existing \
+            ${{ matrix.package.path }}/dist/*
