@@ -2,8 +2,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="proyecto-final",
-    version="0.0.1",
+    name="proyecto-mlops-final",
+    version="0.0.2",
     description="Full CRISP-DM pipeline aggregator (depends on all phase packages)",
     author="Angel Castellanos, Alejandro Azurdia, Diego Morales",
     packages=find_packages(),

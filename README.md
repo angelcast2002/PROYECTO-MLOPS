@@ -200,7 +200,7 @@ Además del paquete monolítico `proyecto-mlops`, cada etapa está publicada ind
 - Modeling: https://pypi.org/project/proyecto-modeling/
 - Evaluation: https://pypi.org/project/proyecto-eval/
 - Deployment: https://pypi.org/project/proyecto-deploy/
-- Agregador (CLI multi-paquete): https://pypi.org/project/proyecto-final/
+- Agregador (CLI multi-paquete): https://pypi.org/project/proyecto-mlops-final/
 - Paquete monolítico: https://pypi.org/project/proyecto-mlops/
 
 Para publicar nuevas versiones de todos los paquetes desde GitHub Actions, usa el workflow “CD - PyPI (multi-package)” (manual) o genera un tag `packages-vX.Y.Z` y se publicará en matriz.

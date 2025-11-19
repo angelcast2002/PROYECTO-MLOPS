@@ -26,7 +26,7 @@ jobs:
           - { id: "proyecto-modeling",path: "packages/proyecto-modeling" }
           - { id: "proyecto-eval",    path: "packages/proyecto-eval" }
           - { id: "proyecto-deploy",  path: "packages/proyecto-deploy" }
-          - { id: "proyecto-final",   path: "packages/proyecto-final" }
+          - { id: "proyecto-mlops-final",   path: "packages/proyecto-final" }
     steps:
       - name: Checkout
         uses: actions/checkout@v4
